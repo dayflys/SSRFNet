@@ -1,3 +1,3 @@
-# SSLBackend-2026
+# SSRFNet : 
 
-This repository contains official pytorch implementation for “Efficient Speaker Verification Framework via Integration of Lightweight PTM and ReDimNet” paper.
+This repository contains official pytorch implementation for “SSRFNet : Stage-wise SV-Mixer and RedimNet Fusion Network for Speaker Verification” paper.
