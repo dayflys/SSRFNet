@@ -1,6 +1,6 @@
 # 🧪 In-Depth Evaluation (Evaluation-Only Mode)
 
-This directory provides scripts to **evaluate pretrained SV-Mixer models** on multiple benchmark datasets without training.
+This directory provides scripts to **evaluate pretrained SSRFNet model** on multiple benchmark datasets without training.
 
 ## 📊 Supported Benchmarks
 
@@ -13,21 +13,6 @@ Running the evaluation will automatically test on:
 - **VoxSRC2023**
 - **VCMix**
 
-## 🔧 Model Selection
-
-Two pretrained SV-Mixer variants are provided:
-
-- **Small model**  
-  - 5 layers  
-  - Size: 33.0M parameters  
-  - GMACs: 11.9  
-  - Vox1-O EER: 0.91%
-
-- **Large model**  
-  - 17 layers  
-  - Size: 80.0M  
-  - GMACs: 19.4  
-  - Vox1-O EER: 0.78%
 
 ## ▶ How to Run
 
@@ -47,9 +32,18 @@ Two pretrained SV-Mixer variants are provided:
      - voxsrc_test.txt  
      - voices_eval.txt  
 
-   - `model_type`: `'Small'` or `'Large'`
-
 3. **Run the script**
 
    ```bash
    python test_code/main.py
+
+## Model Performance
+
+- **SSRFNet**    
+  - Size: 75.1M parameters  
+  - Vox1-O EER: 0.601%
+  - Vox1-E EER: 0.800%
+  - Vox1-H EER: 1.446%
+  - VOiCES EER: 8.55%
+  - VoxSRC23 EER: 4.14%
+  - VCMix EER: 2.47%

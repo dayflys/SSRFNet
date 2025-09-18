@@ -15,14 +15,14 @@ def get_args():
         # dataset path 
         'trained_model'         : 'paht_trained_ssrfnet',
         
-        'path_vox2_train'       : '/data/list2/vox2_train_samples.txt',
-        'path_vox_O_trials'     : '/data/list2/vox2_testO_trials.txt',
-        'path_vox_E_trials'     : '/data/list2/vox2_testE_trials.txt',
-        'path_vox_H_trials'     : '/data/list2/vox2_testH_trials.txt',
-        'path_vcmix_trials'     : '/data/list2/vcmix_test_trial.txt',
-        'path_voxsrc_trials'    : '/data/list2/voxsrc23_test_trial.txt',
-        'path_voices_dev_trials': '/data/list2/voices_dev_test_trial.txt',
-        'path_voices_eval_trials': '/data/list2/voices_eval_test_trial.txt',
+        'path_vox2_train'       : '/data/list/vox2_train_samples.txt',
+        'path_vox_O_trials'     : '/data/list/vox2_testO_trials.txt',
+        'path_vox_E_trials'     : '/data/list/vox2_testE_trials.txt',
+        'path_vox_H_trials'     : '/data/list/vox2_testH_trials.txt',
+        'path_vcmix_trials'     : '/data/list/vcmix_test.txt',
+        'path_voxsrc_trials'    : '/data/list/voxsrc23_test.txt',
+        'path_voices_dev_trials': '/data/list/voices_dev.txt',
+        'path_voices_eval_trials': '/data/list/voices_eval.txt',
 
         # huggingface model
         'huggingface_url'       : 'microsoft/wavlm-large',

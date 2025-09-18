@@ -18,8 +18,8 @@ def get_args():
         'path_vox_train'       : '/data/list/vox2_train_samples.txt',
         'path_vox_O_trials'     : '/data/list/vox2_testO_trials.txt',
         'path_replacement'      : ['VoxCeleb2', ''], # Set second path to '' if preprocessed features are not used
-        'path_musan'            : '/data/list/musan_list.txt',
-        'path_rir'              : '/data/list/rir_noises_list.txt',
+        'path_musan'            : '/data/list/musan.txt',
+        'path_rir'              : '/data/list/rir_noises.txt',
 
         # huggingface model
         'huggingface_url'       : 'microsoft/wavlm-large',
