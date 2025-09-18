@@ -13,7 +13,7 @@ def get_args():
         #FIXME
         #---------------------------------
         # dataset path 
-        'trained_model'         : 'paht_trained_ssrfnet',
+        'trained_model'         : 'path_trained_ssrfnet',
         
         'path_vox2_train'       : '/data/list/vox2_train_samples.txt',
         'path_vox_O_trials'     : '/data/list/vox2_testO_trials.txt',

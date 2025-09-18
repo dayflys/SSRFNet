@@ -1,5 +1,5 @@
 
-[![Torch Hub](https://img.shields.io/badge/Supported-Torch%20Hub-orange?logo=pytorch)](colab 주소 )
+<!-- [![Torch Hub](https://img.shields.io/badge/Supported-Torch%20Hub-orange?logo=pytorch)](https://colab.research.google.com/drive/1_zGof1NGM5WgZ5sJtQfsy1D7rKq9RwxR?usp=sharing) -->
 
 # SSRFNet : Stage-wise SV-Mixer and RedimNet Fusion Network for Speaker Verification
 
@@ -13,8 +13,8 @@
 ## 🚀 One-line Usage via Torch Hub
 
 ```python
-ssrfnet = torch.hub.load("Jungwoo4021/SV-Mixer", "large_svmixer", pretrained=True).eval()
-embedding = ssrfnet(input_wav)
+# ssrfnet = torch.hub.load("Jungwoo4021/SV-Mixer", "large_svmixer", pretrained=True).eval()
+# embedding = ssrfnet(input_wav)
 ```
 
 ## 🔍 Overview
@@ -99,7 +99,7 @@ Run detailed evaluations on multiple datasets (VoxCeleb-Hard, VC-Mix, VOiCES, ..
 Use this option if you only need a **pretrained speaker verification model** for quick testing or downstream tasks — no training or evaluation setup required. You can directly load a pretrained SSRFNet model with a single line:
 
 ```python
-sv_mixer = torch.hub.load("Jungwoo4021/SV-Mixer", "small_svmixer", pretrained=True).eval()
+# sv_mixer = torch.hub.load("Jungwoo4021/SV-Mixer", "small_svmixer", pretrained=True).eval()
 ```
 
 ➝ Go to [`📁experiments/inference`](./experiments/inference/README.md)

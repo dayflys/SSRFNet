@@ -5,7 +5,7 @@ This example demonstrates how to use the pretrained **SSRFNet** from [SSRFNet](h
 ---
 
 ## 🚀 Open Colab
-Go to [Google Colab]() and see the 5-line example.
+<!-- Go to [Google Colab]() and see the 5-line example. -->
 
 ---
 
