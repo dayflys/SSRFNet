@@ -6,7 +6,7 @@ import torch.nn as nn
 # 필수: 이 레포에서 제공하는 엔트리포인트 함수 목록
 dependencies = ["torch", "torchvision"]
 
-def small_svmixer(pretrained=False, **kwargs):
+def SSRFNet_svmixer(pretrained=False, **kwargs):
     from experiments.eval_only.test_code.models.svmixer import SVMixer
 
     model = SVMixer(12, 149, 1024)
@@ -22,7 +22,7 @@ def small_svmixer(pretrained=False, **kwargs):
     
 
 
-def backend_module(pretrained=False, **kwargs):
+def SSRFNet_backend(pretrained=False, **kwargs):
     from experiments.eval_only.test_code.models.redimnet import ReDimNetWrap
 
     model = ReDimNetWrap(
