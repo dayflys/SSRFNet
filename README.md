@@ -107,6 +107,7 @@ Use this option if you only need a **pretrained speaker verification model** for
 ## 📎 Citation
 
 ```bash
+we will be 
 
 ```
 

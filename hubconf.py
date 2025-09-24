@@ -14,22 +14,30 @@ def small_svmixer(pretrained=False, **kwargs):
     if pretrained:
         # 사전 학습된 가중치를 불러오기 (예: 릴리스에 올려둔 파일에서 다운로드)
         ckpt = torch.hub.load_state_dict_from_url(
-            "https://github.com/Jungwoo4021/SV-Mixer/raw/main/assets/trained_models/svmixer_5layer_eer0.91_student_model.pt",
+            "https://github.com/dayflys/SSRFNet/releases/download/v1.0.1/ssrfnet_eer0.60_sv_mixer_state_dict.pt",
             map_location="cpu"
         )
         model.load_state_dict(ckpt)
     return model
+    
 
 
 def backend_module(pretrained=False, **kwargs):
-    from experiments.eval_only.test_code.models.ecapa import ECAPA_TDNN
+    from experiments.eval_only.test_code.models.redimnet import ReDimNetWrap
 
-    model = ECAPA_TDNN(5, 1024, 512, 192)
+    model = ReDimNetWrap(
+        F=64, 
+        C=16, 
+        embed_dim=192,
+        insert_feature_num= 4,
+        num_hidden_layers = 12,
+        merge_layer_num = 4
+    )
 
     if pretrained:
         # 사전 학습된 가중치를 불러오기 (예: 릴리스에 올려둔 파일에서 다운로드)
         ckpt = torch.hub.load_state_dict_from_url(
-            "https://github.com/Jungwoo4021/SV-Mixer/raw/main/assets/trained_models/svmixer_5layer_eer0.91_classifier.pt",
+            "https://github.com/dayflys/SSRFNet/releases/download/v1.0.1/ssrfnet_eer0.60_classifier_state_dict.pt",
             map_location="cpu"
         )
         model.load_state_dict(ckpt)
