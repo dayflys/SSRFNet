@@ -22,26 +22,31 @@ embedding = backend(ptm_embedding, input_wav)
 
 ## 🔍 Overview
 
-
+SSRFNet (Stage-wise SV-Mixer and ReDimNet Fusion Network) is a lightweight framework for speaker verification that integrates spectrogram features with hidden states from pre-trained models (PTMs). Unlike prior studies, SSRFNet retains spectrograms as the main input and progressively injects PTM hidden states through a Projection-based Fusion Module (PFM). This stage-wise strategy ensures efficient and compatible integration, achieving strong accuracy with far fewer parameters than conventional fusion method
 ---
 
 ## 🧠 Key Contributions
-
+1.	Stage-wise Feature Fusion Stratgey — Gradually integrates PTM hidden states into ReDimNet to enrich spectrogram features efficiently.
+2.	Projection-based Fusion Module (PFM) — Resolves feature space mismatch with a lightweight projection mechanism.
+3.	Efficient Hybrid Design — Combines SV-Mixer and ReDimNet to achieve high accuracy with only 74.2M parameters.
 ---
 
 ## 🏗️ Architecture
 
 The SSRFNet pipeline consists of:
 
-1. **SV-Mixer Encoder Blocks** (12 layers, 1024 hidden dimension)
-2. **SSRFNet** (based on [ReDimNet](https://github.com/IDRnD/redimnet))
+1. **Front-End : SV-Mixer Encoder Blocks** (12 layers, 1024 hidden dimension)
+2. **Back-End : SSRFNet classifier** (based on [ReDimNet](https://github.com/IDRnD/redimnet))
 
 ![SSRFNet Architecture](./assets/images/SSRFNet_architecture.png)
 
 ---
 
 ## 📊 Experimental Results
-
+| Model | Params | Vox1-O/E/H EER | VCMix EER | VoxSRC2023 EER | 
+| - | - | - | - | - | 
+| WavLM base+/ ECAPA | 106M | 0.850 / 0.953 / 1.959 | 2.81% | 5.66% |  
+| **SSRFNet** | **74.2M** | **0.601 / 0.800 / 1.446** | **2.47** | **4.14** | 
 
 ---
 
