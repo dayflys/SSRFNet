@@ -6,6 +6,19 @@ import torch.nn as nn
 # 필수: 이 레포에서 제공하는 엔트리포인트 함수 목록
 dependencies = ["torch", "torchvision"]
 
+def _fix_state_dict(state_dict):
+    """모델의 state_dict 키를 수정하여 호환성을 유지합니다."""
+    new_state_dict = {}
+    for k, v in state_dict.items():
+        if k.startswith("student_model."):
+            new_key = k[len("student_model.") :]
+        elif k.startswith("classifier."):
+            new_key = k[len("classifier.") :]
+        else:
+            new_key = k
+        new_state_dict[new_key] = v
+    return new_state_dict
+
 
 def _ensure_sys_path():
     import sys
@@ -45,6 +58,7 @@ def SSRFNet_svmixer(pretrained=False, **kwargs):
             "https://github.com/dayflys/SSRFNet/releases/download/v1.0.1/ssrfnet_eer0.60_sv_mixer_state_dict.pt",
             map_location="cpu"
         )
+        ckpt = _fix_state_dict(ckpt)
         model.load_state_dict(ckpt)
     return model
 
@@ -68,5 +82,7 @@ def SSRFNet_backend(pretrained=False, **kwargs):
             "https://github.com/dayflys/SSRFNet/releases/download/v1.0.1/ssrfnet_eer0.60_classifier_state_dict.pt",
             map_location="cpu"
         )
+        ckpt = _fix_state_dict(ckpt)
         model.load_state_dict(ckpt)
     return model
+
