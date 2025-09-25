@@ -7,17 +7,20 @@ import torch.nn as nn
 dependencies = ["torch", "torchvision"]
 
 def _fix_state_dict(state_dict):
-    """모델의 state_dict 키를 수정하여 호환성을 유지합니다."""
-    new_state_dict = {}
-    for k, v in state_dict.items():
-        if k.startswith("student_model."):
-            new_key = k[len("student_model.") :]
-        elif k.startswith("classifier."):
-            new_key = k[len("classifier.") :]
+    """모델의 state_dict 키를 정리합니다."""
+    state_dict = state_dict.get('state_dict', state_dict)
+    cleaned_state_dict = {}
+    for key, value in state_dict.items():
+        if key.startswith("student_model."):
+            new_key = key[len("student_model."):]
+        elif key.startswith("classifier."):
+            new_key = key[len("classifier."):]
         else:
-            new_key = k
-        new_state_dict[new_key] = v
-    return new_state_dict
+            new_key = key
+        if 'total_ops' in new_key or 'total_params' in new_key:
+            continue
+        cleaned_state_dict[new_key] = value
+    return cleaned_state_dict
 
 
 def _ensure_sys_path():
