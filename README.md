@@ -1,20 +1,23 @@
 
-<!-- [![Torch Hub](https://img.shields.io/badge/Supported-Torch%20Hub-orange?logo=pytorch)](https://colab.research.google.com/drive/1_zGof1NGM5WgZ5sJtQfsy1D7rKq9RwxR?usp=sharing) -->
+[![Torch Hub](https://img.shields.io/badge/Supported-Torch%20Hub-orange?logo=pytorch)](https://colab.research.google.com/drive/1DaVpnnwQd9Jg655RR5leDabZVNnjIo79?usp=sharing) 
 
 # SSRFNet : Stage-wise SV-Mixer and RedimNet Fusion Network for Speaker Verification
 
 > [📄 Paper: *SSRFNet : Stage-wise SV-Mixer and RedimNet Fusion Network for Speaker Verification*](./assets/paper.pdf)  
 > 📅 Conference: IEEE ICASSP 2026 (submitted)  
-> 🚀 **Now available on [PyTorch Hub](https://colab.research.google.com/drive/1_zGof1NGM5WgZ5sJtQfsy1D7rKq9RwxR?usp=sharing)!**  
-> (Load pretrained **SSRFNet-Mixer** models in just one line of code)
+> 🚀 **Now available on [PyTorch Hub](https://colab.research.google.com/drive/1DaVpnnwQd9Jg655RR5leDabZVNnjIo79?usp=sharing)!**  
+> (Load pretrained **SSRFNet** models in just few line of code)
 
 ---
 
-## 🚀 One-line Usage via Torch Hub
+## 🚀 Usage via Torch Hub
 
 ```python
-# ssrfnet = torch.hub.load("Jungwoo4021/SV-Mixer", "large_svmixer", pretrained=True).eval()
-# embedding = ssrfnet(input_wav)
+front = torch.hub.load("dayflys/SSRFNet",'SSRFNet_svmixer', pretrained=True).eval()
+backend = torch.hub.load("dayflys/SSRFNet",'SSRFNet_backend', pretrained=True).eval()
+
+ptm_embedding = front(input_wav)
+embedding = backend(ptm_embedding, input_wav)
 ```
 
 ## 🔍 Overview
@@ -96,10 +99,11 @@ Run detailed evaluations on multiple datasets (VoxCeleb-Hard, VC-Mix, VOiCES, ..
 
 ### Option 3: Inference-Only Mode (Using Only Speaker Embeddings) colab↗
 
-Use this option if you only need a **pretrained speaker verification model** for quick testing or downstream tasks — no training or evaluation setup required. You can directly load a pretrained SSRFNet model with a single line:
+Use this option if you only need a **pretrained speaker verification model** for quick testing or downstream tasks — no training or evaluation setup required. You can directly load a pretrained SSRFNet model with few line:
 
 ```python
-# sv_mixer = torch.hub.load("Jungwoo4021/SV-Mixer", "small_svmixer", pretrained=True).eval()
+front = torch.hub.load("dayflys/SSRFNet",'SSRFNet_svmixer', pretrained=True).eval()
+backend = torch.hub.load("dayflys/SSRFNet",'SSRFNet_backend', pretrained=True).eval()
 ```
 
 ➝ Go to [`📁experiments/inference`](./experiments/inference/README.md)
@@ -107,8 +111,7 @@ Use this option if you only need a **pretrained speaker verification model** for
 ## 📎 Citation
 
 ```bash
-we will be 
-
+The citation will be added after the paper is accepted to ICASSP 2026.
 ```
 
 ## 🛡️ License

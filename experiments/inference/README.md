@@ -5,7 +5,7 @@ This example demonstrates how to use the pretrained **SSRFNet** from [SSRFNet](h
 ---
 
 ## 🚀 Open Colab
-<!-- Go to [Google Colab]() and see the 5-line example. -->
+Go to [Google Colab](https://colab.research.google.com/drive/1DaVpnnwQd9Jg655RR5leDabZVNnjIo79?usp=sharing) and see few line example.
 
 ---
 
@@ -15,8 +15,16 @@ If you only want to use the pretrained models, you can easily load them with `to
 ```python
 import torch
 
-ssrfnet = torch.hub.load("dayflys/ssrfnet", "ssrfnet", pretrained=True).eval()
+# Load model
+front = torch.hub.load("dayflys/SSRFNet",'SSRFNet_svmixer', pretrained=True).eval()
+backend = torch.hub.load("dayflys/SSRFNet",'SSRFNet_backend', pretrained=True).eval()
 
+# Dummy waveform input (1 second at 48 kHz)
+input_wav = torch.rand(1, 48000)
+
+# Forward pass
 with torch.no_grad():
-    embedding = ssrfnet(input_wav)
+    ptm_embedding = front(input_wav)
+    embedding = backend(ptm_embedding,input_wav)
+
 ```
