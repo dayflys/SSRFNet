@@ -31,10 +31,10 @@ import torch.nn.functional as F
 from collections import OrderedDict
 from typing import Iterable, Optional
 from .modules import CustomMLPMixerBlock
-
 from .layers import *
 from .layers import poolings as pooling_layers
-from data_augmentation import GaussianNoiseAug
+# 상대경로 추가 
+from ..data_augmentation import GaussianNoiseAug
 
 #------------------------------------------
 #              Main blocks

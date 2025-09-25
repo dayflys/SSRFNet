@@ -1,8 +1,8 @@
 import torch
 import torch.nn as nn
-
 from .modules import *
-from data_augmentation import GaussianNoiseAug
+# 상대경로 추가 
+from ..data_augmentation import GaussianNoiseAug
 
 class SVMixer(nn.Module):
     def __init__(self, num_hidden_layers, seq_len, hidden_size, dropout=0.1):

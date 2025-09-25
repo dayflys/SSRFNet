@@ -1,15 +1,40 @@
 # hubconf.py
 
-import sys
-from pathlib import Path
-
 import torch
 import torch.nn as nn
 
 # 필수: 이 레포에서 제공하는 엔트리포인트 함수 목록
 dependencies = ["torch", "torchvision"]
 
+
+def _ensure_sys_path():
+    import sys
+    from pathlib import Path
+
+    repo_root = Path(__file__).resolve().parent
+    extra_paths = [
+        repo_root,
+        repo_root / "experiments" / "eval_only" / "test_code",
+        repo_root / "experiments" / "train" / "train_code",
+    ]
+
+    for path in extra_paths:
+        if path.exists():
+            path_str = str(path)
+            if path_str not in sys.path:
+                sys.path.insert(0, path_str)
+
+
+_ensure_sys_path()
+
+try:  # 허브에서 로드할 때 data_augmentation 경로를 미리 확보
+    import data_augmentation  # noqa: F401
+except ModuleNotFoundError:
+    pass
+
+
 def SSRFNet_svmixer(pretrained=False, **kwargs):
+    _ensure_sys_path()
     from experiments.eval_only.test_code.models.svmixer import SVMixer
 
     model = SVMixer(12, 149, 1024)
@@ -22,19 +47,19 @@ def SSRFNet_svmixer(pretrained=False, **kwargs):
         )
         model.load_state_dict(ckpt)
     return model
-    
 
 
 def SSRFNet_backend(pretrained=False, **kwargs):
+    _ensure_sys_path()
     from experiments.eval_only.test_code.models.redimnet import ReDimNetWrap
 
     model = ReDimNetWrap(
-        F=64, 
-        C=16, 
+        F=64,
+        C=16,
         embed_dim=192,
-        insert_feature_num= 4,
-        num_hidden_layers = 12,
-        merge_layer_num = 4
+        insert_feature_num=4,
+        num_hidden_layers=12,
+        merge_layer_num=4
     )
 
     if pretrained:
