@@ -477,7 +477,7 @@ class ReDimNetWrap(nn.Module):
         self.tf_optimized_arch = tf_optimized_arch
         self.insert_feature_num = insert_feature_num
         self.num_hidden_layers = num_hidden_layers
-        print(f"Wrap ReDimNet insert_feature_num : {self.insert_feature_num}")
+        print(f"The Number of inserted Stage Num in SSRFNet : {self.insert_feature_num}")
         if tf_optimized_arch:
             _ReDimNet = ReDimNetTFOpt
         else:
@@ -532,11 +532,11 @@ class ReDimNetWrap(nn.Module):
         self.conv_list = nn.ModuleList([])
         self.merge_layer_num = merge_layer_num 
         self.lin_idx = self.get_window_centers(self.num_hidden_layers,self.merge_layer_num,self.insert_feature_num)
-        print(f'merge num : {merge_layer_num}')
-        print(f'self.lin_idx(window 중앙값) : {self.lin_idx}')
+        print(f'THe Number of merge layers Num in SSRFNet : {merge_layer_num}')
+        # print(f'self.lin_idx(window 중앙값) : {self.lin_idx}')
         for i,idx in enumerate(self.lin_idx):
             self.conv_list.append(weigth1d_tensor(N=merge_layer_num,C=F*C,sequential=True))
-            print(f'{i} : {int(idx)-self.merge_layer_num//2} ~ {int(idx)+self.merge_layer_num//2}')
+            print(f'{i} : {int(idx)-self.merge_layer_num//2} ~ {int(idx)+self.merge_layer_num//2 - 1}')
         self.gaussian = GaussianNoiseAug()
 
     def forward(self,x,x_spec):
