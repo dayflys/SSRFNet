@@ -1,1 +1,4 @@
-> Following the submission guidelines, we will release the detailed code only after the paper is accepted, to ensure that the authors cannot be identified.
+# SSRFNet
+
+This repository contains official pytorch implementation for “SSRFNET : STAGE-WISE SV-MIXER AND REDIMNET FUSION NETWORK FOR SPEAKER VERIFICATION” paper.
+
